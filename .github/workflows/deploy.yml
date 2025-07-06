@@ -3,8 +3,6 @@ name: Deploy Nginx
 on:
   push:
     branches: [main]
-    # paths:
-    #   - 'nginx/**'
 
 jobs:
   build-and-deploy:
@@ -21,7 +19,7 @@ jobs:
 
     # 3. 建構 nginx image
     - name: Build Nginx Docker image
-      run: docker build -t ryohei3364/booktrend-nginx:latest ./nginx
+      run: docker build -t ryohei3364/booktrend-nginx:latest .
 
     # 4. 推送 nginx image 到 Docker Hub
     - name: Push Nginx image
