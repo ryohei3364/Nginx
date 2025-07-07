@@ -1,0 +1,17 @@
+services:
+  nginx:
+    image: ryohei3364/booktrend-nginx:latest
+    container_name: booktrend-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro  # 如果有 SSL 憑證目錄
+    networks:
+      - shared-net
+    restart: unless-stopped
+
+networks:
+  shared-net:
+    external: true
